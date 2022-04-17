@@ -13,26 +13,24 @@ function computerPlay() {
 }
 
 function playerSelection() {
-    let playerChoice = prompt('Please enter rock, paper, or scissors');
-    playerChoice = playerChoice.toLowerCase();
+    let playerChoice = prompt('Please enter rock, paper, or scissors'); 
 
-    switch(playerChoice) {
-        case 'rock':
-            return playerChoice;
-            break;
+        playerChoice = playerChoice.toLowerCase();
+        
+        switch(playerChoice) {
+            case 'rock':
+                return playerChoice;
+                break;
 
-        case 'paper':
-            return playerChoice;
-            break;
+            case 'paper':
+                return playerChoice;
+                break;
 
-        case 'scissors':
-            return playerChoice;
-            break;
-
-        default:
-            alert(`That isn't a valid answer. Please try again.`);
+            case 'scissors':
+                return playerChoice;
+                break; 
+        }
     }
-}
 
 let computerScore = 0;
 let playerScore = 0;
@@ -41,7 +39,7 @@ let gameRounds = 0;
 
 function playRound() {
     let computer = computerPlay();
-    console.log(computer); //Remove later - here for testing draws
+     //Remove console.log later - here for testing draws
 
     let player = playerSelection();
 
@@ -54,12 +52,15 @@ function playRound() {
     } else if ((player) === (computer)) {
         gameRounds ++;
         alert(`Draw! You both chose ${player}!`); 
+    } else if ((player) === undefined) {
+        alert(`Oops! That doesn't look quite right. Try again!`);
     } else {
         gameRounds ++;
         computerScore ++;
         alert(`You lose this round! CPU chose ${computer} and you chose ${player}!`);
     } 
 }
+
 
 function game() {
     for (let i = 0; i < 5; i ++) {
@@ -77,7 +78,14 @@ function game() {
         console.log("Player score: ", playerScore);
         console.log("CPU score: ", computerScore);  
     }
-  }   
+  }  
+
+    if (playerScore > computerScore) {
+        alert('You win!');
+    } else {
+        alert('You lose!');
+    }
+    
 }
 
 game();
