@@ -1,5 +1,6 @@
 <script>
 
+//Function for randomly selecting either rock, paper, or scissors for the CPU
 function computerPlay() {
     let cpuChoice = Math.floor(Math.random() * 3);
 
@@ -12,6 +13,7 @@ function computerPlay() {
     }
 }
 
+//Function for prompting and selecting the player's choice
 function playerSelection() {
     let playerChoice = prompt('Please enter rock, paper, or scissors'); 
 
@@ -32,15 +34,15 @@ function playerSelection() {
         }
     }
 
+//Setting the starting score and rounds counter
 let computerScore = 0;
 let playerScore = 0;
 let gameRounds = 0;
 
-
+//Function for playing one round, executes computer and player selection functions
+//Sets win/lose conditions, and alerts for the player
 function playRound() {
     let computer = computerPlay();
-     //Remove console.log later - here for testing draws
-
     let player = playerSelection();
 
     if (((player) === 'rock' && (computer) === 'scissors') ||
@@ -61,7 +63,10 @@ function playRound() {
     } 
 }
 
-
+//Function for a full game of 5 rounds
+//Uses a loop to execute playRound 5 times, and displays results in console.log
+//Includes conditions for tiebreak scenario
+//Includes alerts for final result, win or lose
 function game() {
     for (let i = 0; i < 5; i ++) {
         playRound();
@@ -85,9 +90,10 @@ function game() {
     } else {
         alert('You lose!');
     }
-    
 }
 
+//Function on page load, asks player whether to start game
+//If yes, executes game() function, and if no, quits out
     function startGame(Question, yes, no) {
         if (confirm(Question)) yes()
         else no();
@@ -99,6 +105,7 @@ function game() {
         function () {alert('You quit!');}
     );
 
+//Displays final scores in console.log    
 console.log("Total rounds played: ", gameRounds);
 console.log("Final player score: ", playerScore);
 console.log("Final CPU score: ", computerScore);
