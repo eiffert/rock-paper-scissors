@@ -69,13 +69,15 @@ function game() {
         console.log("CPU score: ", computerScore);
     }
 
-    if ((playerScore === computerScore) && (gameRounds >= 5)) {
+    while (playerScore === computerScore) {
+    if (gameRounds >= 5) {
         alert(`Tiebreaker round!`);
         playRound();
         console.log("Rounds played: ", gameRounds);
         console.log("Player score: ", playerScore);
-        console.log("CPU score: ", computerScore);
+        console.log("CPU score: ", computerScore);  
     }
+  }   
 }
 
 game();
