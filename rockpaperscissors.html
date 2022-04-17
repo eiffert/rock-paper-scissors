@@ -1,0 +1,87 @@
+<script>
+
+function computerPlay() {
+    let cpuChoice = Math.floor(Math.random() * 3);
+
+    if (cpuChoice === 0) {
+        return 'rock';
+    } else if (cpuChoice === 1) {
+        return 'paper';
+    } else {
+        return 'scissors';
+    }
+}
+
+function playerSelection() {
+    let playerChoice = prompt('Please enter rock, paper, or scissors');
+    playerChoice = playerChoice.toLowerCase();
+
+    switch(playerChoice) {
+        case 'rock':
+            return playerChoice;
+            break;
+
+        case 'paper':
+            return playerChoice;
+            break;
+
+        case 'scissors':
+            return playerChoice;
+            break;
+
+        default:
+            alert(`That isn't a valid answer. Please try again.`);
+    }
+}
+
+let computerScore = 0;
+let playerScore = 0;
+let gameRounds = 0;
+
+
+function playRound() {
+    let computer = computerPlay();
+    console.log(computer); //Remove later - here for testing draws
+
+    let player = playerSelection();
+
+    if (((player) === 'rock' && (computer) === 'scissors') ||
+    ((player) === 'paper' && (computer) === 'rock') ||
+    ((player) === 'scissors' && (computer) === 'paper')) {
+        gameRounds ++;
+        playerScore ++;
+        alert(`You won this round! You chose ${player} and CPU chose ${computer}!`);
+    } else if ((player) === (computer)) {
+        gameRounds ++;
+        alert(`Draw! You both chose ${player}!`); 
+    } else {
+        gameRounds ++;
+        computerScore ++;
+        alert(`You lose this round! CPU chose ${computer} and you chose ${player}!`);
+    } 
+}
+
+function game() {
+    for (let i = 0; i < 5; i ++) {
+        playRound();
+        console.log("Rounds played: ", gameRounds);
+        console.log("Player score: ", playerScore);
+        console.log("CPU score: ", computerScore);
+    }
+
+    if ((playerScore === computerScore) && (gameRounds >= 5)) {
+        alert(`Tiebreaker round!`);
+        playRound();
+        console.log("Rounds played: ", gameRounds);
+        console.log("Player score: ", playerScore);
+        console.log("CPU score: ", computerScore);
+    }
+}
+
+game();
+
+console.log("Total rounds played: ", gameRounds);
+console.log("Final player score: ", playerScore);
+console.log("Final CPU score: ", computerScore);
+
+</script>
